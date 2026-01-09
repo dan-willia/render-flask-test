@@ -1,19 +1,8 @@
-from flask import render_template
-from myapp import app
+from flask import Blueprint, render_template
 
-@app.route('/')
-@app.route('/index')
+main = Blueprint("main", __name__)
+
+@main.route("/")
 def index():
-    user = {'username': 'Miguel'}
-    posts = [
-        {
-            'author': {'username': 'John'},
-            'body': 'Beautiful day in Portland!'
-        },
-        {
-            'author': {'username': 'Susan'},
-            'body': 'The Avengers movie was so cool!'
-        }
-    ]
-    return render_template('index.html', title='Home', user=user, posts=posts)
+    return render_template("index.html")
 
